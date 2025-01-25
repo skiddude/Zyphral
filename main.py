@@ -25,9 +25,8 @@ server_message_response = requests.get(server_message_url)
 
 # defs
 def clear_console():
-    # Check the operating system
     if platform.system() == "Windows":
-        os.system('cls')  # Clear for Windows
+        os.system('cls') 
     else:
         os.system('clear')
 
@@ -153,6 +152,13 @@ def run_menu():
             tweaksandpatches_menu()
         elif menu_option == "Settings":
             settings_menu()
+        elif menu_option == "About":
+            console.print("""
+Zyphral is roblox bootstrapper made in python and doesn't work at all
+and is made by one person and that's me!
+github repo: https://github.com/skiddude/Zyphral/
+website: https://skiddude.github.io/zyphral
+"""
         elif menu_option == "Quit":
             quit_menu()
             break  # Exit the program
