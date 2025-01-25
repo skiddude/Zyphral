@@ -11,7 +11,7 @@ from rich.console import Console
 from rich.markdown import Markdown
 from rich.panel import Panel
 from pyfiglet import Figlet
-# end of imports
+
 
 # vars
 console = Console()
@@ -55,8 +55,10 @@ update_spinner.start()
 time.sleep(2)
 update_spinner.stop()
 
+#logo
 logo_font = Figlet(font="bloody")
 logo = logo_font.renderText('Zyphral')
+
 
 #menu options
 menu_options = [
@@ -64,17 +66,15 @@ menu_options = [
     "Client Settings",
     "Tweaks and Patches",
     "Settings",
+    "About",
     "Quit",
 ]
 
 client_settings = [
     "Disable Telemetry",
-    "Disable FPS cap",
+    "Mouse Cursor",
     "FPS Cap",
-    "Launcher",
-    "Polling Delay",
-    "Automatic APK Updates",
-    "Disable APK Verification",
+    "Preferred emoji type",
     "Go Back",
 ]
 
@@ -89,6 +89,7 @@ clear_console()
 console.print(logo)
 server_message()
 
+# more defs
 def main_menu():
     console.print("Please choose an option:")
     return select(menu_options, cursor=">", cursor_style="white")
@@ -97,36 +98,44 @@ def fastflag_menu():
     clear_console()
     console.print(logo, justify="center")
     server_message()
-    console.print("FastFlags Editor menu:")
-    # Example of handling a specific option in the FastFlags menu
+    console.print("FastFlags Editor:")
+    # NOT IMPLEMENTED AT ALL
 
 def clientsettings_menu():
     clear_console()
-    print(logo)
+    console.print(logo)
     server_message()
     client_setting = select(client_settings, cursor=">", cursor_style="white")
-    if client_setting == "Go Back":
+    if client_setting == "Disable Telemetry":
+        clear_console()
+        confirm("Disable Telemtry?")
+    elif client_setting == "FPS Cap":
+        clear_console()
+        prompt("FPS Cap?")
+    elif client_setting == "Go Back":
         main_menu()
 
 def tweaksandpatches_menu():
     clear_console()
-    print(logo)
+    console.print(logo)
     server_message()
     tweak_patch = select(tweaks_patches, cursor=">", cursor_style="white")
-    print("1. Example Option 1")
+    if tweak_patch == "Bring Back the Old 'Off' Sound":
+        confirm("Bring Back the Old 'Off' Sound?")
+    
 
 def settings_menu():
     clear_console()
-    print(logo)
+    console.print(logo)
     server_message()
-    print("Settings menu:")
+    console.print("Settings menu:")
     # Placeholder for settings options
 
 def quit_menu():
     clear_console()
-    print("Quitting Zyphral...")
+    console.print("Quitting Zyphral...")
 
-# Main logic to navigate between menus
+
 def run_menu():
     while True:
         menu_option = main_menu()
