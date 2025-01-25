@@ -86,7 +86,7 @@ tweaks_patches = [
 ]
 
 clear_console()
-console.print(logo)
+console.print(logo, justify="center")
 server_message()
 
 # more defs
@@ -96,6 +96,11 @@ def main_menu():
 
 def fastflag_menu():
     clear_console()
+    console.print("WARNING", style="bold white on red", justify="center")
+    console.print("Please use this with caution", justify="center")
+    console.print("Misusing this can lead to instability or unexpected things happening.", justify="center")
+    time.sleep(5)
+    clear_console()
     console.print(logo, justify="center")
     server_message()
     console.print("FastFlags Editor:")
@@ -103,7 +108,7 @@ def fastflag_menu():
 
 def clientsettings_menu():
     clear_console()
-    console.print(logo)
+    console.print(logo, justify="center")
     server_message()
     client_setting = select(client_settings, cursor=">", cursor_style="white")
     if client_setting == "Disable Telemetry":
@@ -117,7 +122,7 @@ def clientsettings_menu():
 
 def tweaksandpatches_menu():
     clear_console()
-    console.print(logo)
+    console.print(logo, justify="center")
     server_message()
     tweak_patch = select(tweaks_patches, cursor=">", cursor_style="white")
     if tweak_patch == "Bring Back the Old 'Off' Sound":
@@ -126,7 +131,7 @@ def tweaksandpatches_menu():
 
 def settings_menu():
     clear_console()
-    console.print(logo)
+    console.print(logo, justify="center")
     server_message()
     console.print("Settings menu:")
     # Placeholder for settings options
