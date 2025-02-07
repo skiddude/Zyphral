@@ -11,8 +11,18 @@ from pyfiglet import Figlet
 
 # Constants
 SERVER_MESSAGE_URL = 'https://raw.githubusercontent.com/skiddude/Zyphral/refs/heads/main/server_message.txt'
-LOGO_FONT = "bloody"
-LOGO_TEXT = "Zyphral"
+logo = """
+▒███████▒▓██   ██▓ ██▓███   ██░ ██  ██▀███   ▄▄▄       ██▓    
+▒ ▒ ▒ ▄▀░ ▒██  ██▒▓██░  ██▒▓██░ ██▒▓██ ▒ ██▒▒████▄    ▓██▒    
+░ ▒ ▄▀▒░   ▒██ ██░▓██░ ██▓▒▒██▀▀██░▓██ ░▄█ ▒▒██  ▀█▄  ▒██░    
+  ▄▀▒   ░  ░ ▐██▓░▒██▄█▓▒ ▒░▓█ ░██ ▒██▀▀█▄  ░██▄▄▄▄██ ▒██░    
+▒███████▒  ░ ██▒▓░▒██▒ ░  ░░▓█▒░██▓░██▓ ▒██▒ ▓█   ▓██▒░██████▒
+░▒▒ ▓░▒░▒   ██▒▒▒ ▒▓▒░ ░  ░ ▒ ░░▒░▒░ ▒▓ ░▒▓░ ▒▒   ▓▒█░░ ▒░▓  ░
+░░▒ ▒ ░ ▒ ▓██ ░▒░ ░▒ ░      ▒ ░▒░ ░  ░▒ ░ ▒░  ▒   ▒▒ ░░ ░ ▒  ░
+░ ░ ░ ░ ░ ▒ ▒ ░░  ░░        ░  ░░ ░  ░░   ░   ░   ▒     ░ ░   
+  ░ ░     ░ ░               ░  ░  ░   ░           ░  ░    ░  ░
+░         ░ ░                                                 
+"""
 MENU_OPTIONS = [
     "FastFlags Editor",
     "Client Settings",
@@ -71,8 +81,6 @@ def display_server_message():
 
 def display_logo():
     """Display the Zyphral logo."""
-    logo_font = Figlet(font=LOGO_FONT)
-    logo = logo_font.renderText(LOGO_TEXT)
     console.print(logo, justify="center")
 
 def run_spinner(spinner, duration=2):
@@ -105,14 +113,21 @@ def clientsettings_menu():
     display_logo()
     display_server_message()
     client_setting = select(CLIENT_SETTINGS, cursor=">", cursor_style="white")
+
     if client_setting == "Disable Telemetry":
         clear_console()
+        display_logo()
+        display_server_message()
         if confirm("Disable Telemetry?"):
             console.print("Telemetry disabled.", style="bold green")
+
     elif client_setting == "FPS Cap":
         clear_console()
+        display_logo()
+        display_server_message()
         fps_cap = prompt("Enter FPS Cap:")
         console.print(f"FPS Cap set to {fps_cap}.", style="bold green")
+
     elif client_setting == "Go Back":
         main_menu()
 
