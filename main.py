@@ -7,7 +7,7 @@ from beaupy import confirm, prompt, select
 from beaupy.spinners import *
 from rich import print
 from rich.console import Console
-from pyfiglet import Figlet
+
 
 # Constants
 SERVER_MESSAGE_URL = 'https://raw.githubusercontent.com/skiddude/Zyphral/refs/heads/main/server_message.txt'
